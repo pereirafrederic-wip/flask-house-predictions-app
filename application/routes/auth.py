@@ -18,6 +18,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and check_password_hash(user.password_hash, form.password.data):
             login_user(user)
+            print('Un user vient de se connecté')
             flash("Logged in with success", category="success")
             return redirect(url_for('auth.home'))
         else:
